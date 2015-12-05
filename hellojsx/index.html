@@ -5,8 +5,14 @@
   <script src="https://fb.me/JSXTransformer-0.12.0.js"></script>
 
   <script type="text/jsx" charset-"utf-8">
+  var Greeting = React.createClass({
+    render: function () {
+      return <h1 className="message">Hello, Greeting!</h1>;
+    }
+  });
+
     React.render(
-      <h1 className="message">Hello, JSX!</h1>, 
+      <Greeting />,
       document.body
     );
   </script>

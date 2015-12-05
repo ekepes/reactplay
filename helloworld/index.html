@@ -5,7 +5,10 @@
   <script src="https://fb.me/react-dom-0.14.3.js"></script>
 
   <script type="text/javascript" charset-"utf-8">
-    React.render(React.createElement('h1', null, "Hello, React!"), document.body);
+    React.render(
+      React.createElement('h1', { id: "message" }, "Hello, React!"), 
+      document.body
+    );
   </script>
 </body>
 </html>

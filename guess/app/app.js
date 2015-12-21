@@ -4,7 +4,8 @@ var GuessBox = React.createClass({
   getInitialState: function() {
     return {
       answer: 5,
-      guess: 0
+      guess: 0,
+      message: ""
     };
   },
   handleChange: function(event) {
@@ -13,26 +14,14 @@ var GuessBox = React.createClass({
   checkGuess: function() {
     if (this.state.guess != 0) {
       if (this.state.guess == this.state.answer) {
-        return (
-          <div>
-            <strong>You guessed it!</strong>
-          </div>
-        );        
-      }
-
-      if (this.state.guess < this.state.answer) {
-        var result = "You guessed too low."
+        this.setState({ message: "You guessed it!" });
+      } else if (this.state.guess < this.state.answer) {
+        this.setState({ message: "You guessed too low." });
+      } else if (this.state.guess > this.state.answer) {
+        this.setState({ message: "You guessed too high." });
       } else {
-        var result = "You guessed too high."
+        this.setState({ message: "Please enter a guess!" });
       }
-      
-      return (
-        <div className="alert alert-warning">
-          <strong className="bg-danger">{result}</strong>
-        </div>
-      );
-    } else {
-      return "";
     }
   },
   render: function() {
@@ -41,7 +30,10 @@ var GuessBox = React.createClass({
         <h1>Guess My Number!</h1>
         <label>Guess (1-10):</label>
         <input id="guess-field" type="number" min="1" max="10" onChange={this.handleChange}></input>
-        { this.checkGuess() }
+        <button className="btn btn-default pull-right" onClick={this.checkGuess}>Guess</button>
+        <div>
+            <strong>{ this.state.message }</strong>
+        </div>
       </div>
     );
   }

@@ -1,9 +1,13 @@
 import React from 'react';
 
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 var GuessBox = React.createClass({
   getInitialState: function() {
     return {
-      answer: 5,
+      answer: getRandomInt(1, 10),
       guess: 0,
       message: ""
     };
